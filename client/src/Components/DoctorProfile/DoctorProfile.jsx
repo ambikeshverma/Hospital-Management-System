@@ -16,7 +16,7 @@ import { LoadingOverlay} from '@mantine/core';
 import { IconEdit } from '@tabler/icons-react';
 import { useEffect, useState } from 'react';
 import axios from 'axios'
-import Field from '../ProfileField/field';
+import Field from '../ProfileField/Field';
 import { toast } from 'react-toastify';
 
 const DoctorProfile = () => {
