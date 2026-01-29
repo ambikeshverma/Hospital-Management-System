@@ -1,0 +1,25 @@
+.tableHead{
+  background-color: rgb(248, 101, 47);
+  color: white;
+}
+.rowSelected {
+  background-color: var(--mantine-color-blue-light);
+}
+.rejected{
+  background-color: red;
+  border-radius: 20px;
+  padding: 4px 13px;
+  color: white;
+}
+.approved{
+  background-color: green;
+  border-radius: 20px;
+  padding: 4px 13px;
+  color: white
+}
+.pending{
+  background-color: rgb(208, 208, 0);
+  border-radius: 20px;
+  padding: 4px 13px;
+  color: white;
+}

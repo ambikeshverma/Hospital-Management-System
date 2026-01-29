@@ -1,0 +1,108 @@
+.drPanelPage{
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+}
+.dashboardPart2{
+    height: 100vh;
+    width: 100%;
+    padding: 20px 30px;
+    flex: 1;
+    overflow-y: scroll;
+}
+.mainCard{
+  width: 100%;
+  border-radius: 7px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  padding: 20px;
+  gap: 5px;
+  background-image: url("/public/Assets/b8.jpg");
+  background-size: cover;
+  background-position: center;
+}
+.mainCard .h3{
+  font-size: 20px;
+  font-weight: 400;
+}
+.mainCard .h1{
+  font-size: 30px;
+  font-weight: bold;
+}
+.mainCard .p{
+  width: 60%;
+  font-size: 15px;
+  color: rgb(58, 58, 58);
+}
+.mainCard button{
+  margin-top: 20px;
+  padding: 10px 25px;
+  border: none;
+  background-color: orangered;
+  color: white;
+  font-weight: bold;
+  border-radius: 7px;
+}
+.sidebar {
+  width: 300px;
+  background: #fff;
+  transition: transform 0.3s ease;
+}
+
+/* Mobile hidden */
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    z-index: 1001;
+    transform: translateX(-100%);
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+}
+.mobileNavbar {
+  display: none;
+}
+@media (max-width: 768px) {
+  .mobileNavbar {
+    height: 56px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 16px;
+    background: white;
+    border-bottom: 1px solid #eee;
+    position: sticky;
+    top: 0;
+    z-index: 1100;
+  }
+
+  .title {
+    font-weight: 600;
+  }
+}
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+}
+.statsGridWrapper{
+  width: 100%;
+}
+.wrapper2{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+@media(max-width:400px){
+  .wrapper2{
+  flex-direction: column;
+  gap: 30px;
+}
+}

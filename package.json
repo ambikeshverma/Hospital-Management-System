@@ -1,0 +1,19 @@
+{
+  "dependencies": {
+    "concurrently": "^9.2.1"
+  },
+  "name": "hospital-management-system",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "client": "cd client && npm run dev",
+    "server": "cd server && npm run dev",
+    "dev": "concurrently -n \"client,server\" -c \"cyan,yellow\" \"npm run client\" \"npm run server\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
