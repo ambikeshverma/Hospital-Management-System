@@ -113,7 +113,7 @@ router.get('/getAllAppointment',allowRoles("admin"), async(req, res)=>{
 router.get('/getAppointment/:doctorId',allowRoles("doctor"), async(req, res)=>{
   const { doctorId } = req.params
     try{
-       const AllAppointments = await AppointmentSchema.find({doctor:doctorId})
+       const AllAppointments = await AppointmentSchema.find({doctor:doctorId}).sort({ createdAt: -1 })
        .populate("user", "name email",)
        .populate("doctor","name")
        res.status(200).json(AllAppointments)

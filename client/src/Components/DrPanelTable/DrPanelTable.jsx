@@ -70,7 +70,7 @@ const handleViewDetails = (appointment) => {
         </Table.Td>
         <Table.Td>{item.ptPhone}</Table.Td>
         <Table.Td><Button onClick={()=>handleViewDetails(item)}>Patient Details</Button></Table.Td>
-        <Table.Td>01-10PM</Table.Td>
+        <Table.Td>{item.selectedSlot}</Table.Td>
         <Table.Td>{item.createdAt}</Table.Td>
         <Table.Td>{item.currentStatus==="Pending" ? <> <Button onClick={()=>handleUpdateStatus(item._id, "Rejected")} mr={10} color="orange" style={{border:"1px solid orange"}} variant="light">
           Reject

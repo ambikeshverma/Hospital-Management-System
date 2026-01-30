@@ -1,4 +1,4 @@
-import React,{ useState } from 'react'
+import React,{ useEffect, useState } from 'react'
 import {
   Icon2fa,
   IconBellRinging,
@@ -18,8 +18,25 @@ import DoctorProfile from '../../Components/DoctorProfile/DoctorProfile'
 import DrDashboard from '../../Components/DrDashboard/DrDashboard'
 import { TableSelection } from '../../Components/AdminPanelTable/TableSelection'
 import { Outlet } from 'react-router-dom'
+import { socket } from "../../../socket";
+import { toast } from "react-toastify";
+
 
 const DoctorPanel = () => {
+
+  const doctor = JSON.parse(localStorage.getItem("user"))
+
+  useEffect(() => {
+  socket.emit("join-doctor", doctor._id);
+
+  socket.on("new-appointment", (data) => {
+    toast.info(data.message);
+  });
+
+  return () => socket.off("new-appointment");
+}, []);
+
+
   const [opened, setOpened] = useState(false)
   const data = [
   { link: '', label: 'Dashboard', icon: IconBellRinging },
@@ -38,7 +55,7 @@ const DoctorPanel = () => {
       </div>
     <div className={styles.drPanelPage}>
       <div className={`${styles.sidebar} ${opened ? styles.open : ''}`}>
-           <DrPanelSideBar data={data} panelType="Doctor Panel" image="doctor-panel.png" closeSidebar={() => setOpened(!opened)}></DrPanelSideBar>
+           <DrPanelSideBar data={data} panelType="Doctor Panel" image="doctor-panel.png" closeSidebar={() => setOpened(false)}></DrPanelSideBar>
       </div>
       {opened && <div className={styles.overlay} onClick={() => setOpened(false)} />}
       <div className={styles.dashboardPart2}>

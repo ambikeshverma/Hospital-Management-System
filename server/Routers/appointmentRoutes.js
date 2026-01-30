@@ -34,7 +34,19 @@ router.post('/createAppointment', async(req, res)=>{
         ptAddress,
         selectedSlot
     })
-   
+
+    //Notify doctor
+    global.io.to(`doctor-${doctorId}`).emit("new-appointment", {
+    message: "New appointment booked",
+    createdAppointment,
+    });
+
+      // Notify Admins
+    global.io.to("admins").emit("new-appointment-admin", {
+    message: "New appointment booked",
+    createdAppointment,
+  });
+
     res.status(201).json(createdAppointment);
     }catch(err){
         res.status(500).json({msg: err.message})

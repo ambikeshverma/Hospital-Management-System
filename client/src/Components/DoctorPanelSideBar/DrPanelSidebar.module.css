@@ -36,6 +36,7 @@
   border-radius: var(--mantine-radius-sm);
   font-weight: 500;
   cursor: pointer;
+  position: relative;
 
   &[data-active] {
     &,
@@ -75,4 +76,9 @@
 /* Active icon */
 .active .linkIcon {
   color: #0284c7;
+}
+.badge{
+  position: absolute;
+  top: 0px;
+  right: 0px;
 }

@@ -49,6 +49,7 @@ export default function DrPanelSideBar({data, panelType, image,closeSidebar}) {
         </div>
 
         <div onClick={handleLogout} className={classes.link} >
+          <img className={classes.badge} src="/Assets/new-badge-removebg-preview.png" width="50px" alt="" />
           <IconLogout className={classes.linkIcon} stroke={1.5} />
           <span>Logout</span>
         </div>

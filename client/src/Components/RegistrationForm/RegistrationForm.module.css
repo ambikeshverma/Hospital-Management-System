@@ -4,7 +4,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #37706f;
 }
 .loginForm{
     display: flex;
@@ -16,7 +15,6 @@
     padding: 20px;
     border-radius: 10px;
     background-color: white;
-    border: 1px solid blue;
 }
 .formImage{
     display: flex;

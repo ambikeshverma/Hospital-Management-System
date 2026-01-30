@@ -3,14 +3,7 @@
   min-height: 100vh;
   display: flex;
 }
-/* .dashboardPart2{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px 30px;
-    flex: 1;
-} */
+
 .adminPart2{
    width: 100%;
    height: 100vh;

@@ -46,9 +46,19 @@ const LoginForm = () => {
               <img src="/Assets/hospital_bg.png" width="300px" alt="" />
            </div>
            <div className={styles.formContainer}>
+                <div className={styles.thirdParty}>
+                  <div className={styles.google}>
+                    <img src="/Assets/Google icon.webp" width="20px" alt="" />
+                    <span>Google</span>
+                  </div>
+                  <div className={styles.apple}>
+                    <img src="/Assets/Apple Icon.png" width="20px" alt="" />
+                    <span>Apple</span>
+                  </div>
+                </div>
                 <div>Login Account</div>
-               <TextField onChange={(e)=>{setEmail(e.target.value)}} value={email} label="Username" variant="standard" />
-               <TextField onChange={(e)=>{setPassword(e.target.value)}} value={password} label="Password" type='password' variant="standard" />
+               <TextField onChange={(e)=>{setEmail(e.target.value)}} value={email} label="Username" />
+               <TextField onChange={(e)=>{setPassword(e.target.value)}} value={password} label="Password" type='password' />
                <Button onClick={handleLogin} variant="contained" sx={{mt:3}}>{loading?<Loader size={25} color='white'></Loader>:"Login"}</Button>
                <div className={styles.RegsiterLink} onClick={()=>navigate('/registration')}>Not have Account Register</div>
            </div>

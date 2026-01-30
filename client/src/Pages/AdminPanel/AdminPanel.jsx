@@ -1,4 +1,4 @@
-import React,{ useState } from 'react'
+import React,{ useEffect, useState } from 'react'
 import {
   Icon2fa,
   IconBellRinging,
@@ -14,14 +14,23 @@ import styles from './AdminPanel.module.css'
 import DrPanelSideBar from '../../Components/DoctorPanelSideBar/DrPanelSideBar'
 import Footer from '../../Components/Footer/Footer'
 import { Burger } from '@mantine/core'
-import { StatsGrid } from '../../Components/StatsGrid/StatsGrid'
-import { StatsRingCard } from '../../Components/StatsRingCard/StatsRingCard'
-import { TableScrollArea } from '../../Components/TableScrollArea/TableScrollArea'
-import { TableSelection } from '../../Components/AdminPanelTable/TableSelection'
-import AdminPanelDrManage from '../../Components/AdminPanelDrManage/AdminPanelDrManage'
 import { Outlet } from 'react-router-dom';
+import { socket } from "../../../socket";
+import { toast } from 'react-toastify';
 
 const AdminPanel = () => {
+
+
+  useEffect(() => {
+  socket.emit("join-admin");
+
+  socket.on("new-appointment-admin", (data) => {
+    toast.info(data.message);
+  });
+
+  return () => socket.off("new-appointment-admin");
+}, []);
+
     const [opened, setOpened] = useState(false)
     const data = [
       { link: '', label: 'Dashboard', icon: IconBellRinging },

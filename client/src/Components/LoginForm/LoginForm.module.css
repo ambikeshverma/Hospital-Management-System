@@ -1,10 +1,9 @@
 .loginPage{
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #78413c;
 }
 .loginForm{
     display: flex;
@@ -15,7 +14,6 @@
     max-width: 750px;
     padding: 20px;
     border-radius: 10px;
-    background-color: white;
 }
 .formImage{
     display: flex;
@@ -33,6 +31,38 @@
     width: 100%;
     max-width: 350px;
     padding: 20px;
+}
+.thirdParty{
+   width: 100%;
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+}
+.google{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 12px;
+    border: 1px solid gray;
+    border-radius: 20px;
+    gap: 6px;
+    cursor: pointer;
+}
+.apple{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 12px;
+    border: 1px solid gray;
+    border-radius: 20px;
+    gap: 6px;
+    cursor: pointer;
+}
+.google:hover{
+    background-color: orangered;
+}
+.apple:hover{
+    background-color: orangered;
 }
 .RegsiterLink{
     font-size: 12px;
