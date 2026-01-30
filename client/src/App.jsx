@@ -20,6 +20,9 @@ import DrPanelTable from './Components/DrPanelTable/DrPanelTable';
 import AllDoctor from './Pages/AllDoctorPage/AllDoctor';
 import RoleProtectedRoutes from './Components/ProtectedRoutes/RoleProtectedRoutes';
 import AdminDashboardHome from './Components/AdminPanelDashboard/AdminDashboardHome';
+import { GetInTouch } from './Components/GetInTouch/GetInTouch';
+import AboutPage from './Pages/AboutPage/AboutPage';
+import ContactUsPage from './Pages/ContactUsPage/ContactUsPage';
 
 const App = () => {
   return (
@@ -31,6 +34,8 @@ const App = () => {
           <Route path='/login' element={<LoginForm></LoginForm>}></Route>
             <Route path='/registration' element={<RegistrationForm></RegistrationForm>}></Route>
             <Route path='/' element={<ProtectedRoutes><Home/></ProtectedRoutes>}></Route>
+            <Route path='/about' element={<ProtectedRoutes><AboutPage></AboutPage></ProtectedRoutes>}></Route>
+            <Route path='/contact' element={<ProtectedRoutes><ContactUsPage></ContactUsPage></ProtectedRoutes>}></Route>
             <Route path='/allDoctors' element={<ProtectedRoutes><AllDoctor></AllDoctor></ProtectedRoutes>}></Route>
             <Route path='/doctor/specific/:id' element={<ProtectedRoutes> <DoctorSpecific></DoctorSpecific> </ProtectedRoutes>}></Route>
             <Route element={<RoleProtectedRoutes allowedRoles={["doctor"]} />}>

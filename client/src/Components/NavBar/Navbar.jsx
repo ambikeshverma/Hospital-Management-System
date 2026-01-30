@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styles from './Navbar.module.css'
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -10,6 +10,10 @@ import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
 import Badge from '@mui/material/Badge';
 import MenuItem from '@mui/material/MenuItem';
+import HomeIcon from '@mui/icons-material/Home';
+import InfoIcon from '@mui/icons-material/Info';
+import ContactMailIcon from '@mui/icons-material/ContactMail';
+import MedicalServicesIcon from '@mui/icons-material/MedicalServices';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
@@ -160,14 +164,6 @@ export default function PrimarySearchAppBar() {
       onClose={handleMobileMenuClose}
     >
       <MenuItem>
-        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="error">
-            <MailIcon />
-          </Badge>
-        </IconButton>
-        <p>Messages</p>
-      </MenuItem>
-      <MenuItem>
         <IconButton
           size="large"
           aria-label="show 17 new notifications"
@@ -178,6 +174,42 @@ export default function PrimarySearchAppBar() {
           </Badge>
         </IconButton>
         <p>Notifications</p>
+      </MenuItem>
+      <MenuItem >
+        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
+          <Badge color="error">
+            <HomeIcon/>
+          </Badge>
+        </IconButton>
+        <p onClick={()=>navigate('/')}>Home</p>
+      </MenuItem>
+      <MenuItem >
+        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
+          <Badge color="error">
+            <InfoIcon/>
+          </Badge>
+        </IconButton>
+        <p onClick={()=>navigate('/about')}>About Us</p>
+      </MenuItem>
+      <MenuItem>
+        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
+          <Badge color="error">
+            <ContactMailIcon/>
+          </Badge>
+        </IconButton>
+        <p onClick={()=>navigate('/contact')}>Contact Us</p>
+      </MenuItem>
+      <MenuItem>
+        <IconButton
+          size="large"
+          aria-label="show 17 new notifications"
+          color="inherit"
+        >
+          <Badge badgeContent={4} color="error">
+            <MedicalServicesIcon/>
+          </Badge>
+        </IconButton>
+        <p onClick={()=>navigate('/allDoctors')}>Doctors</p>
       </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
@@ -241,6 +273,19 @@ export default function PrimarySearchAppBar() {
           </Search>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+            <div className={styles.listWrapper}>
+                <NavLink to={'/'} className={({isActive})=>`${styles.link} ${isActive?styles.active:""}`}><span>Home</span></NavLink>
+            </div>
+            <div className={styles.listWrapper}>
+                <NavLink to={'/about'} className={({isActive})=>`${styles.link} ${isActive?styles.active:""}`}><span>About</span></NavLink>
+            </div>
+            <div className={styles.listWrapper}>
+                <NavLink to={'/contact'} className={({isActive})=>`${styles.link} ${isActive?styles.active:""}`}><span>Contact Us</span></NavLink>
+            </div>
+            <div className={styles.listWrapper}>
+                <NavLink to={'/allDoctors'} className={({isActive})=>`${styles.link} ${isActive?styles.active:""}`}><span>Doctors</span></NavLink>
+            </div>
+
             <IconButton size="large" aria-label="show 4 new mails" color="inherit">
               <Badge badgeContent={4} color="error">
                 <MailIcon />

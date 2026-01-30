@@ -49,7 +49,7 @@ const Footer = () => {
               <Link href="/about" underline="hover" color="inherit">
                 About Us
               </Link>
-              <Link href="/services" underline="hover" color="inherit">
+              <Link href="/" underline="hover" color="inherit">
                 Services
               </Link>
               <Link href="/contact" underline="hover" color="inherit">
