@@ -13,7 +13,7 @@
   align-items: start;
   padding: 20px;
   gap: 5px;
-  background-image: url("/public/Assets/b3.jpg");
+  background-image: url("/Assets/b3.jpg");
   background-size: cover;
   background-position: center;
 }
@@ -30,6 +30,18 @@
   font-size: 15px;
   color: rgb(58, 58, 58);
 }
+@media(max-width:400px){
+  .mainCard .h3{
+    font-size: 15px;
+  }
+  .mainCard .h1{
+    font-size: 20px;
+  }
+  .mainCard .p{
+    font-size: 10px;
+  }
+  
+}
 .mainCard button{
   margin-top: 20px;
   padding: 10px 25px;
@@ -40,12 +52,26 @@
   border-radius: 7px;
   cursor: pointer;
 }
+@media(max-width:400px){
+  .mainCard button{
+    font-size: 12px;
+    padding: 5px 10px;
+    margin-top: 12px;
+    font-weight: 400;
+  }
+}
 .doctors{
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    /* gap: 20px; */
+}
+@media(max-width:400px){
+  .doctors{
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
 }
 .inputWrapper{
   width: 100%;

@@ -40,7 +40,7 @@ const AdminPanel = () => {
       </div>
     <div className={styles.drPanelPage}>
       <div className={`${styles.sidebar} ${opened ? styles.open : ''}`}>
-           <DrPanelSideBar data={data} panelType="Admin Panel" image="admin-panel.jpg" ></DrPanelSideBar>
+           <DrPanelSideBar data={data} panelType="Admin Panel" image="admin-panel.jpg" closeSidebar={() => setOpened(!opened)} ></DrPanelSideBar>
       </div>
       {opened && <div className={styles.overlay} onClick={() => setOpened(false)} />}
       <div className={styles.adminPart2}>

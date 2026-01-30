@@ -9,7 +9,7 @@ import { NavLink } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 
-export default function DrPanelSideBar({data, panelType, image}) {
+export default function DrPanelSideBar({data, panelType, image,closeSidebar}) {
   const navigate = useNavigate();
   const handleLogout = ()=>{
       localStorage.removeItem("token")
@@ -21,6 +21,7 @@ export default function DrPanelSideBar({data, panelType, image}) {
     to={item.link}
     key={item.label}
     end={item.link === ''}
+    onClick={closeSidebar}
     className={({ isActive }) =>
       `${classes.link} ${isActive ? classes.active : ''}`
     }
@@ -41,7 +42,8 @@ export default function DrPanelSideBar({data, panelType, image}) {
       </div>
 
       <div className={classes.footer}>
-        <div className={classes.link} onClick={()=>navigate('/')}>
+        <div className={classes.link} onClick={()=>{ closeSidebar();
+          navigate('/')}}>
           <IconSwitchHorizontal className={classes.linkIcon} stroke={1.5} />
           <span >Main Website</span>
         </div>

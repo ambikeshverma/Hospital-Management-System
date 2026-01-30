@@ -38,7 +38,7 @@ const DoctorPanel = () => {
       </div>
     <div className={styles.drPanelPage}>
       <div className={`${styles.sidebar} ${opened ? styles.open : ''}`}>
-           <DrPanelSideBar data={data} panelType="Doctor Panel" image="doctor-panel.png"></DrPanelSideBar>
+           <DrPanelSideBar data={data} panelType="Doctor Panel" image="doctor-panel.png" closeSidebar={() => setOpened(!opened)}></DrPanelSideBar>
       </div>
       {opened && <div className={styles.overlay} onClick={() => setOpened(false)} />}
       <div className={styles.dashboardPart2}>
