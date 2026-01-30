@@ -4,6 +4,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #C3C3B2;
 }
 .loginForm{
     display: flex;
@@ -13,7 +14,9 @@
     min-height: 400px;
     max-width: 750px;
     padding: 20px;
+    background-color: white;
     border-radius: 10px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.711) ;
 }
 .formImage{
     display: flex;
@@ -31,6 +34,11 @@
     width: 100%;
     max-width: 350px;
     padding: 20px;
+}
+.loginHeading{
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
 }
 .thirdParty{
    width: 100%;
@@ -60,15 +68,16 @@
 }
 .google:hover{
     background-color: orangered;
+    color: white;
 }
 .apple:hover{
     background-color: orangered;
+    color: white;
 }
 .RegsiterLink{
     font-size: 12px;
     color: rgb(72, 72, 72);
     text-align: center;
-    cursor: pointer;
 }
 @media(max-width:450px){
     .loginForm{

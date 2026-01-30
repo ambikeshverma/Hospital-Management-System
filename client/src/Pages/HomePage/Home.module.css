@@ -41,7 +41,8 @@
 }
 @media(max-width:400px){
     .floatingBtn{
-        padding: 10px 15px;
+        padding: 12px 15px;
         font-size: 12px;
+        border-radius: 7px;
     }
 }

@@ -5,6 +5,7 @@
     width: 100%;
     min-height: 100%;
     padding: 70px 0px ;
+    background-color: aliceblue;
 }
 .CardDiv{
     width: 100%;
@@ -23,7 +24,7 @@
 }
 .mainHeading{
   width: 100%;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;

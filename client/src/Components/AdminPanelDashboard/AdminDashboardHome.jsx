@@ -18,15 +18,15 @@ import {
 
 export default function AdminDashboardHome() {
   return (
-    <Container fluid>
+    <Container style={{backgroundColor:"#EFEBE9", minHeight:"100vh"}} fluid>
       
       {/* 🔷 Top Section */}
       <Group justify="space-between" mb="lg">
         <div>
           <Title order={2}>Dashboard</Title>
-          <Text c="dimmed">Welcome back, Admin 👋</Text>
+          <Text c="dimmed">Welcome back, Admin</Text>
         </div>
-        <Badge color="green" size="lg" variant="light">
+        <Badge style={{border:"1px solid green"}} color="green" size="lg" variant="light">
           System Active
         </Badge>
       </Group>
@@ -36,7 +36,7 @@ export default function AdminDashboardHome() {
         <Card shadow="sm" padding="lg" radius="md" withBorder>
           <Group justify="space-between">
             <Text size="sm" c="dimmed">Total Users</Text>
-            <IconUsers size={20} />
+            <IconUsers color="blue" size={30} />
           </Group>
           <Title order={3} mt="sm">1,240</Title>
         </Card>
@@ -44,7 +44,7 @@ export default function AdminDashboardHome() {
         <Card shadow="sm" padding="lg" radius="md" withBorder>
           <Group justify="space-between">
             <Text size="sm" c="dimmed">Total Doctors</Text>
-            <IconStethoscope size={20} />
+            <IconStethoscope color="orangered" size={30} />
           </Group>
           <Title order={3} mt="sm">85</Title>
         </Card>
@@ -52,7 +52,7 @@ export default function AdminDashboardHome() {
         <Card shadow="sm" padding="lg" radius="md" withBorder>
           <Group justify="space-between">
             <Text size="sm" c="dimmed">Appointments</Text>
-            <IconCalendarStats size={20} />
+            <IconCalendarStats color="green" size={30} />
           </Group>
           <Title order={3} mt="sm">320</Title>
         </Card>
@@ -60,7 +60,7 @@ export default function AdminDashboardHome() {
         <Card shadow="sm" padding="lg" radius="md" withBorder>
           <Group justify="space-between">
             <Text size="sm" c="dimmed">Revenue</Text>
-            <IconCurrencyRupee size={20} />
+            <IconCurrencyRupee color="red" size={30} />
           </Group>
           <Title order={3} mt="sm">₹48,500</Title>
         </Card>

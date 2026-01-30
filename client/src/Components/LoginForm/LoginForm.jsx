@@ -5,7 +5,6 @@ import {useNavigate} from 'react-router-dom'
 import styles from './LoginForm.module.css'
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import Footer from '../Footer/Footer';
 import { Loader } from '@mantine/core';
 
 
@@ -46,6 +45,7 @@ const LoginForm = () => {
               <img src="/Assets/hospital_bg.png" width="300px" alt="" />
            </div>
            <div className={styles.formContainer}>
+                <div className={styles.loginHeading}>Login Account</div>
                 <div className={styles.thirdParty}>
                   <div className={styles.google}>
                     <img src="/Assets/Google icon.webp" width="20px" alt="" />
@@ -56,15 +56,13 @@ const LoginForm = () => {
                     <span>Apple</span>
                   </div>
                 </div>
-                <div>Login Account</div>
                <TextField onChange={(e)=>{setEmail(e.target.value)}} value={email} label="Username" />
                <TextField onChange={(e)=>{setPassword(e.target.value)}} value={password} label="Password" type='password' />
                <Button onClick={handleLogin} variant="contained" sx={{mt:3}}>{loading?<Loader size={25} color='white'></Loader>:"Login"}</Button>
-               <div className={styles.RegsiterLink} onClick={()=>navigate('/registration')}>Not have Account Register</div>
+               <div className={styles.RegsiterLink} >Don't have an account? <span onClick={()=>navigate('/registration')} style={{color:"orangered",textDecoration:"underline"}}>Register here</span> </div>
            </div>
         </div>
     </div>
-    <Footer></Footer>
     </>
   )
 }

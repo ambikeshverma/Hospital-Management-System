@@ -9,6 +9,7 @@
     padding: 20px 30px;
     flex: 1;
     overflow-y: scroll;
+    background-color: #EFEBE9;
 }
 .mainCard{
   width: 100%;

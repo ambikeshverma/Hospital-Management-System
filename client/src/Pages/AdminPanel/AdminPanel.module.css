@@ -9,6 +9,7 @@
    height: 100vh;
    overflow-y: scroll;
    padding: 20px 10px;
+   background-color: #EFEBE9;
 }
 .mainCard{
   width: 100%;

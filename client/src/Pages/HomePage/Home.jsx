@@ -18,7 +18,7 @@ const Home = () => {
     <HeroImageRight></HeroImageRight>
     <div className={styles.homePage}>
       <button onClick={()=>navigate('/allDoctors')} className={styles.floatingBtn}>+ Doctors</button>
-       <LeadGrid></LeadGrid>
+         <LeadGrid></LeadGrid>
          <FeaturesCards></FeaturesCards>
          <GetInTouch></GetInTouch>
     </div>

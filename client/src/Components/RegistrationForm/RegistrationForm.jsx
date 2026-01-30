@@ -35,12 +35,12 @@ const RegistrationForm = () => {
               <img src="/Assets/hospital_bg.png" width="300px" alt="" />
            </div>
            <div className={styles.formContainer}>
-                <div>Create Account</div>
+                <h3>Create Account</h3>
                <TextField onChange={(e)=>setName(e.target.value)} value={name} label="Name" variant="standard"/>
                <TextField onChange={(e)=>setEmail(e.target.value)} value={email} label="Email" variant="standard"/>
                <TextField onChange={(e)=>setPassword(e.target.value)} value={password} label="Password" type='password' variant="standard" />
                <Button onClick={handleRegistration} variant="contained" sx={{mt:3}}>{loading?<Loader size={25} color='white'></Loader>:"Register"}</Button>
-               <div className={styles.RegsiterLink} onClick={()=>navigate('/login')}>Already have Account Login</div>
+               <div className={styles.RegsiterLink}>Already have an Account? <span onClick={()=>navigate('/login')} style={{color:"orangered",textDecoration:"underline"}}>Login here</span></div>
            </div>
         </div>
     </div> 

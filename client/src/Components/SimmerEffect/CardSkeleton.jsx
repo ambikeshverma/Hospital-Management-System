@@ -1,9 +1,10 @@
 import React from 'react'
+import styles from './CardSkeleton.module.css'
 import { Skeleton } from '@mantine/core';
 
 const CardSkeleton = () => {
   return (
-    <div style={{width:"270px",height:"400px",border:"solid 1px rgb(199, 199, 199)",borderRadius:"7px",padding:"7px"}}>
+    <div className={styles.card}>
         <Skeleton height={250}  mb="xl" />
         <Skeleton height={12} radius="xl" />
         <Skeleton height={12} mt={6} radius="xl" />
