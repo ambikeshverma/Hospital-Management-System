@@ -86,7 +86,7 @@ const handleViewDetails = (appointment) => {
   });
 
   return (
-    <ScrollArea >
+    <ScrollArea px={20}>
       <Table verticalSpacing="sm">
         <Table.Thead>
           <Table.Tr className={classes.tableHead}>

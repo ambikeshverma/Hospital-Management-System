@@ -70,7 +70,7 @@ export default function AdminDashboardHome() {
       <Card shadow="sm" padding="lg" radius="md" withBorder>
         <Title order={4} mb="md">Recent Appointments</Title>
 
-        <Table highlightOnHover striped>
+        <Table highlightOnHover striped >
           <Table.Thead>
             <Table.Tr>
               <Table.Th>Patient</Table.Th>

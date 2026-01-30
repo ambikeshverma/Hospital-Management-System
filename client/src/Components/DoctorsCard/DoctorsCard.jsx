@@ -22,7 +22,7 @@ export function DoctorsCard(props) {
   return (
     <Card onClick={()=>navigate(`/doctor/specific/${props._id}`)} withBorder radius="md" className={classes.card}>
       <Card.Section className={classes.imageSection}>
-  <Image src={`${import.meta.env.VITE_BACKEND_URI}${props.profileImage}`} alt="Dr Rohit Agrawal" />
+  <Image src={`${import.meta.env.VITE_BACKEND_URI}${props.profileImage}`} className={classes.drImg} alt="Dr Image" />
       </Card.Section>
       <Group justify="space-between" mt="md">
         <div>
@@ -31,7 +31,7 @@ export function DoctorsCard(props) {
             {props.email}
           </Text>
         </div>
-        <Rating defaultValue={2} value={ratingValue} size="xs" />
+        <Rating defaultValue={2} onClick={()=>setRatingValue(5)} value={ratingValue} size="xs" />
       </Group>
 
       <Card.Section className={classes.section} mt="md">
@@ -55,7 +55,7 @@ export function DoctorsCard(props) {
             </Text>
           </div>
 
-          <Button radius="xl" style={{ flex: 1 }}>
+          <Button className={classes.bookApt} radius="xl" style={{ flex: 1 }}>
             Book Appointment
           </Button>
         </Group>

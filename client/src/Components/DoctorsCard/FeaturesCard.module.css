@@ -3,7 +3,11 @@
   width: 270px;
   cursor: pointer;
 }
-
+@media(max-width:500px){
+    .card{
+      width: 100%;
+    }
+}
 .imageSection {
   padding: var(--mantine-spacing-md);
   height: 265px;
@@ -13,7 +17,14 @@
   justify-content: center;
   border-bottom: 1px solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
 }
-
+@media(max-width:500px){
+  .imageSection{
+    height: 210px;
+  }
+  .drImg{
+    width: 200px;
+  }
+}
 .label {
   margin-bottom: var(--mantine-spacing-xs);
   line-height: 1;
@@ -37,4 +48,7 @@
 .icon {
   margin-right: 5px;
   color: light-dark(var(--mantine-color-gray-5), var(--mantine-color-dark-2));
+}
+.bookApt{
+  font-size: 12px;
 }
