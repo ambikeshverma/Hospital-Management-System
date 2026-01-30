@@ -24,6 +24,8 @@ import { toast } from "react-toastify";
 
 const DoctorPanel = () => {
 
+  const [unreadAppointments, setUnreadAppointments] = useState(0);
+
   const doctor = JSON.parse(localStorage.getItem("user"))
 
   useEffect(() => {
@@ -31,6 +33,7 @@ const DoctorPanel = () => {
 
   socket.on("new-appointment", (data) => {
     toast.info(data.message);
+    setUnreadAppointments((prev) => prev + 1);
   });
 
   return () => socket.off("new-appointment");
@@ -55,7 +58,11 @@ const DoctorPanel = () => {
       </div>
     <div className={styles.drPanelPage}>
       <div className={`${styles.sidebar} ${opened ? styles.open : ''}`}>
-           <DrPanelSideBar data={data} panelType="Doctor Panel" image="doctor-panel.png" closeSidebar={() => setOpened(false)}></DrPanelSideBar>
+           <DrPanelSideBar data={data} panelType="Doctor Panel" image="doctor-panel.png" 
+           closeSidebar={() => setOpened(false)}
+           unreadAppointments={unreadAppointments}
+           clearUnreadAppointments={() => setUnreadAppointments(0)}
+            ></DrPanelSideBar>
       </div>
       {opened && <div className={styles.overlay} onClick={() => setOpened(false)} />}
       <div className={styles.dashboardPart2}>

@@ -9,27 +9,39 @@ import { NavLink } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 
-export default function DrPanelSideBar({data, panelType, image,closeSidebar}) {
+export default function DrPanelSideBar({data, panelType, image,closeSidebar, unreadAppointments, clearUnreadAppointments}) {
   const navigate = useNavigate();
   const handleLogout = ()=>{
       localStorage.removeItem("token")
       toast.success("Logout Successfull")
       navigate('/login')
     }
-  const links = data.map((item) => (
-    <NavLink
+  const links = data.map((item) =>{ 
+    const isAppointment = item.link === "appointment";
+    return (
+   <NavLink
     to={item.link}
     key={item.label}
     end={item.link === ''}
-    onClick={closeSidebar}
+    onClick={()=>{
+      closeSidebar()
+      if (isAppointment) clearUnreadAppointments();
+     }}
     className={({ isActive }) =>
       `${classes.link} ${isActive ? classes.active : ''}`
     }
   >
     <item.icon className={classes.linkIcon} stroke={1.5} />
     <span>{item.label}</span>
+    {isAppointment && unreadAppointments > 0 && (<>
+        <span className={classes.badge}>{unreadAppointments}</span>
+        <img className={classes.badgeIcon} src="/Assets/new-badge-removebg-preview.png" width="50px" alt="" />
+        </>
+        )}
   </NavLink>
-  ));
+  
+  )
+});
 
   return (
     <nav className={classes.navbar}>
@@ -49,7 +61,6 @@ export default function DrPanelSideBar({data, panelType, image,closeSidebar}) {
         </div>
 
         <div onClick={handleLogout} className={classes.link} >
-          <img className={classes.badge} src="/Assets/new-badge-removebg-preview.png" width="50px" alt="" />
           <IconLogout className={classes.linkIcon} stroke={1.5} />
           <span>Logout</span>
         </div>

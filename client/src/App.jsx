@@ -53,7 +53,7 @@ const App = () => {
             <Route element={<RoleProtectedRoutes allowedRoles={["admin"]} />}>
                 <Route path='/admin' element={<AdminPanel></AdminPanel>}>
                     <Route index element={<AdminDashboardHome></AdminDashboardHome>}></Route>
-                    <Route path='all-appointment' element={<TableSelection></TableSelection>}></Route>
+                    <Route path='appointment' element={<TableSelection></TableSelection>}></Route>
                     <Route path='doctor-management' element={<AdminPanelDrManage></AdminPanelDrManage>}></Route>
                     <Route path="payment" element={<PageNotFound></PageNotFound>}></Route>
                     <Route path='schedule' element={<PageNotFound></PageNotFound>}></Route>
