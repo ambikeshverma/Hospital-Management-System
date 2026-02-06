@@ -53,9 +53,10 @@ const handleViewDetails = (appointment) => {
   setSlowTransitionOpened(true)
 };
   const rows = appointments.map((item,index) => {
+  
     
     return (
-      <Table.Tr key={item.id} className={item.id%2==0?classes.rowSelected:""}>
+      <Table.Tr key={item.id} className={index%2==0?classes.rowSelected:""}>
         <Table.Td>
           {index+1}
         </Table.Td>
@@ -75,7 +76,7 @@ const handleViewDetails = (appointment) => {
         </Button>
         <Button onClick={()=>handleUpdateStatus(item._id, "Approved")} color="green" style={{border:"1px solid green"}} variant="light">
           Accept
-        </Button></>:<span className={item.currentStatus === "Rejected"
+        </Button></>:item.currentStatus==="Approved"?<Button onClick={()=>handleUpdateStatus(item._id, "Completed")} color="pink" style={{border:"1px solid pink"}} variant="light">Complete</Button>:<span className={item.currentStatus === "Rejected"
                                                      ? classes.rejected
                                                      : item.currentStatus === "Approved"
                                                      ? classes.approved

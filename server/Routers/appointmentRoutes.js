@@ -53,4 +53,64 @@ router.post('/createAppointment', async(req, res)=>{
     }  
 })
 
+
+router.get("/doctor/:doctorId/available-slots", async (req, res) => {
+  try {
+    const doctor = await createdUser.findById(req.params.doctorId);
+
+    if (!doctor || doctor.role !== "doctor") {
+      return res.status(404).json({ msg: "Doctor not found" });
+    }
+
+    res.json({
+      doctorName:doctor.name,
+      doctorId: doctor._id,
+      availableSlots: doctor.doctorProfile.slots
+    });
+
+  } catch (err) {
+    res.status(500).json({ msg: err.message });
+  }
+});
+
+
+router.put("/appointments/rebook/:id", async (req, res) => {
+  try {
+    const appointmentId = req.params.id;
+    const { newSlot } = req.body;
+
+    const appointment = await AppointmentSchema.findById(appointmentId);
+    if (!appointment) {
+      return res.status(404).json({ msg: "Appointment not found" });
+    }
+
+    if (appointment.user.toString() !== req.user.id) {
+      return res.status(403).json({ msg: "Unauthorized" });
+    }
+
+    const doctor = await createdUser.findById(appointment.doctor);
+    if (!doctor || doctor.role !== "doctor") {
+      return res.status(404).json({ msg: "Doctor not found" });
+    }
+
+    const slots = doctor.doctorProfile?.slots || [];
+
+    if (!slots.includes(newSlot)) {
+      return res.status(400).json({ msg: "Slot no longer available" });
+    }
+
+    doctor.doctorProfile.slots = slots.filter(s => s !== newSlot);
+    await doctor.save();
+
+    appointment.selectedSlot = newSlot;
+    appointment.currentStatus = "Pending";
+    await appointment.save();
+
+    res.json({ msg: "Appointment rebooked successfully", appointment });
+
+  } catch (err) {
+    res.status(500).json({ msg: err.message });
+  }
+});
+
 export default router;

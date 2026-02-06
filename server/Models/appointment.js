@@ -10,8 +10,8 @@ const appointmentSchema = new mongoose.Schema({
     ptCareOf:{type:String, default:""},
     ptAddress:{type:String, default:""},
     selectedSlot:{ type: [String], default: [] },
-    currentStatus:{type:String, enum:["Pending","Approved","Rejected"], default:"Pending"}
+    currentStatus:{type:String, enum:["Pending","Approved","Rejected","Completed"], default:"Pending"}
 }, {timestamps:true}
 )
 
-export default mongoose.model("appointments", appointmentSchema)
+export default mongoose.model("appointment", appointmentSchema)

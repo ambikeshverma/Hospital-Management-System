@@ -119,7 +119,7 @@ router.get('/doctor/specific/:doctorId', authMiddleware, async(req, res)=>{
 router.get('/getAppointment',authMiddleware , async(req, res)=>{
   const  userId = req.user.id
     try{
-       const AllAppointments = await AppointmentSchema.find({user:userId}).sort({ createdAt: -1 })
+       const AllAppointments = await AppointmentSchema.find({user:userId}).sort({ updatedAt: -1 })
        .populate("user", "name email",)
        .populate("doctor","name")
        res.status(200).json(AllAppointments)

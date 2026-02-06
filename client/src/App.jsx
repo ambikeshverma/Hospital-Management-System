@@ -16,13 +16,13 @@ import DoctorProfile from './Components/DoctorProfile/DoctorProfile';
 import AdminPanelDrManage from './Components/AdminPanelDrManage/AdminPanelDrManage';
 import PageNotFound from './Pages/PageNotFound/PageNotFound';
 import ScrollToTop from './Components/ScrollEffect/ScrollToTop';
-import DrPanelTable from './Components/DrPanelTable/DrPanelTable';
 import AllDoctor from './Pages/AllDoctorPage/AllDoctor';
 import RoleProtectedRoutes from './Components/ProtectedRoutes/RoleProtectedRoutes';
 import AdminDashboardHome from './Components/AdminPanelDashboard/AdminDashboardHome';
 import { GetInTouch } from './Components/GetInTouch/GetInTouch';
 import AboutPage from './Pages/AboutPage/AboutPage';
 import ContactUsPage from './Pages/ContactUsPage/ContactUsPage';
+import DoctorAppointmentCard from './Components/DrPanelTable/DoctorAppointmentCard';
 
 const App = () => {
   return (
@@ -42,7 +42,7 @@ const App = () => {
                 <Route path='/doctor-panel' element={<DoctorPanel></DoctorPanel>}>
                     <Route index element={<DrDashboard />} />
                     <Route path='dashboard' element={<DrDashboard></DrDashboard>}></Route>
-                    <Route path='appointment' element={<DrPanelTable></DrPanelTable>}></Route>
+                    <Route path='appointment' element={<DoctorAppointmentCard></DoctorAppointmentCard>}></Route>
                     <Route path='profile' element={<DoctorProfile></DoctorProfile>}></Route>
                     <Route path='sessions' element={<PageNotFound></PageNotFound>}></Route>
                     <Route path='patients' element={<PageNotFound></PageNotFound>}></Route>

@@ -3,7 +3,7 @@
   color: white;
 }
 .rowSelected {
-  background-color: var(--mantine-color-blue-light);
+  background-color: rgb(198, 232, 244);
 }
 .rejected{
   background-color: red;

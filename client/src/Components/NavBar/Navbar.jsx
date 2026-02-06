@@ -22,10 +22,11 @@ import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import { useDisclosure } from '@mantine/hooks';
-import { Drawer, Button } from '@mantine/core';
+import { Drawer, Button, Loader } from '@mantine/core';
 import { Table } from '@mantine/core';
 import { toast } from 'react-toastify';
 import axios from 'axios';
+import AppointmentCard from '../AppointmentInfo/AppointmentCard';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -69,6 +70,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export default function PrimarySearchAppBar() {
   const navigate = useNavigate();
+  const [loading, setLoading] = React.useState(false)
   const [appointment, setAppointment] = React.useState([])
   const [opened, { open, close }] = useDisclosure(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -81,28 +83,33 @@ export default function PrimarySearchAppBar() {
     navigate('/login')
   }
 
+  const formatToIndianDateTime = (dateString) => {
+  const date = new Date(dateString);
+
+  return date.toLocaleString("en-IN", {
+    timeZone: "Asia/Kolkata",
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: true,
+  });
+};
+
   const handleAppoitment = async()=>{
+        setLoading(true)
          try{
            open()
            const res = await axios.get(`${import.meta.env.VITE_BACKEND_URI}/user/getAppointment`,headers)
            setAppointment(res.data)
          }catch(err){
           toast.error(err.response?.data?.msg)
+         }finally{
+          setLoading(false)
          }
   }
 
-  const rows = appointment.length>0 ? <> {appointment.map((element) => (
-    <Table.Tr key={element.ptEmail}>
-      <Table.Td>{element.user?.name}</Table.Td>
-      <Table.Td>{element.ptName}</Table.Td>
-      <Table.Td>{element.createdAt}</Table.Td>
-      <Table.Td> <span className={element.currentStatus === "Rejected"
-                                                           ? styles.rejected
-                                                           : element.currentStatus === "Approved"
-                                                           ? styles.approved
-                                                           : styles.pending}>{element.currentStatus}</span></Table.Td>
-    </Table.Tr>
-  ))}</>:"You not booked any Appointment"
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -230,19 +237,20 @@ export default function PrimarySearchAppBar() {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="fixed" top="0px" left="0px">
         <Toolbar>
-                <Drawer zIndex={10000} offset={4} radius="md" opened={opened} onClose={close} title="Authentication">
-                     <Table stickyHeader stickyHeaderOffset={60}>
-                           <Table.Thead>
-                             <Table.Tr>
-                               <Table.Th>Booked by</Table.Th>
-                               <Table.Th>Patient</Table.Th>
-                               <Table.Th>Date/Time</Table.Th>
-                               <Table.Th>Status</Table.Th>
-                             </Table.Tr>
-                           </Table.Thead>
-                           <Table.Tbody>{rows}</Table.Tbody>
-                           <Table.Caption></Table.Caption>
-                         </Table>
+                <Drawer zIndex={2000} offset={4} radius="md" opened={opened} onClose={close} title="Booked Appointments">
+                         {loading ? <Loader size={30}></Loader>: appointment.length>0 ? <> {appointment.map((element) => (
+                         <AppointmentCard
+                          bookedBy={element.user?.name}
+                          patientName={element.ptName}
+                          dateTime={formatToIndianDateTime(element.updatedAt)}
+                          doctorName={element.doctor?.name}
+                          doctorIds={element.doctor?._id}
+                          appointmentId={element._id}
+                          status={element.currentStatus}   // pending | approved | rejected | completed | cancelled
+                          closeDrawer={()=>close()}
+                />
+                         ))}</>:"You not booked any Appointment"}
+                         
                 </Drawer>
           <IconButton
             size="large"
