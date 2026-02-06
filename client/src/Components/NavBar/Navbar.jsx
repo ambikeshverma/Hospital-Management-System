@@ -110,7 +110,6 @@ export default function PrimarySearchAppBar() {
          }
   }
 
-
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
@@ -242,8 +241,17 @@ export default function PrimarySearchAppBar() {
                          <AppointmentCard
                           bookedBy={element.user?.name}
                           patientName={element.ptName}
+                          ptPhone={element.ptPhone}
+                          ptEmail={element.ptEmail}
+                          ptAge={element.ptAge}
+                          ptCareOf={element.ptCareOf}
+                          ptAddress={element.ptAddress}
+                          alotedSlot={element.selectedSlot}
+                          updatedAt={element.updatedAt}
                           dateTime={formatToIndianDateTime(element.updatedAt)}
                           doctorName={element.doctor?.name}
+                          doctorDegrees={element.doctor?.doctorProfile?.degrees}
+                          doctorExpertise={element.doctor?.doctorProfile?.expertise}
                           doctorIds={element.doctor?._id}
                           appointmentId={element._id}
                           status={element.currentStatus}   // pending | approved | rejected | completed | cancelled

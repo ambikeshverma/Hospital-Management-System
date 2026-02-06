@@ -121,7 +121,7 @@ router.get('/getAppointment',authMiddleware , async(req, res)=>{
     try{
        const AllAppointments = await AppointmentSchema.find({user:userId}).sort({ updatedAt: -1 })
        .populate("user", "name email",)
-       .populate("doctor","name")
+       .populate("doctor")
        res.status(200).json(AllAppointments)
     }catch(err){
     res.status(500).json({msg:err.message})
