@@ -86,11 +86,12 @@ const handleUpdateStatus = async(id, currentStatus)=>{
 
 const handleOpenPrescription = async (appointmentId) => {
   try {
+    setOpenedPresHist(true);
     const res = await axios.get(
       `${import.meta.env.VITE_BACKEND_URI}/doctor/get-all-prescription/${appointmentId}`,headers
     );
     setPrescriptions(res.data.data);
-    setOpenedPresHist(true);
+    
   } catch (err) {
     toast.error(err.response?.data?.msg);
   }
