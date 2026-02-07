@@ -9,7 +9,7 @@ import jsPDF from "jspdf";
 import { toast } from "react-toastify";
 import AppointmentSlip from "../AppointmentSlip/AppointmentSlip";
 import { Paper, Divider, Grid, Box } from "@mantine/core";
-
+import styles from './AptCard.module.css'
 
 const statusColors = {
   Pending: "yellow",
@@ -55,7 +55,7 @@ const checkSlotsOfDoctor = async(doctorId)=>{
   const res = await axios.get(`${import.meta.env.VITE_BACKEND_URI}/app/doctor/${doctorId}/available-slots`,headers)
   setAvailSlots(res.data.availableSlots)
   }catch(err){
-    toast.error(err.response.data.msg || "Catching error problem")
+    toast.error(err.response?.data?.msg || "Catching error problem")
   }finally{
     setLoading(false)
   }
@@ -94,23 +94,33 @@ const handleDownloadPDF = async () => {
   try {
     setDownloading(true);
 
-    const canvas = await html2canvas(layoutRef.current, {
+    const element = layoutRef.current;
+    const originalWidth = element.style.width;
+    const originalMaxWidth = element.style.maxWidth;
+    element.style.width = "794px";
+    element.style.maxWidth = "794px";
+
+    const canvas = await html2canvas(element, {
       scale: 2,
       useCORS: true,
+      backgroundColor: "#ffffff",
+      windowWidth: 1200, 
+      scrollX: 0,
+      scrollY: -window.scrollY,
     });
+
+
+    element.style.width = originalWidth;
+    element.style.maxWidth = originalMaxWidth;
 
     const imgData = canvas.toDataURL("image/png");
 
-    const imgWidth = canvas.width;
-    const imgHeight = canvas.height;
+    const pdf = new jsPDF("p", "mm", "a4");
 
-    const pdf = new jsPDF({
-      orientation: imgWidth > imgHeight ? "landscape" : "portrait",
-      unit: "px",
-      format: [imgWidth, imgHeight],
-    });
+    const pdfWidth = 210; 
+    const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
 
-    pdf.addImage(imgData, "PNG", 0, 0, imgWidth, imgHeight);
+    pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
     pdf.save("Prescription.pdf");
 
   } catch (error) {
@@ -120,6 +130,8 @@ const handleDownloadPDF = async () => {
     setOpenAptSlip(false);
   }
 };
+
+
 
 
 
@@ -195,24 +207,14 @@ const handleDownloadPDF = async () => {
         <Modal zIndex={2200} size={900} opened={openAptSlip} onClose={()=>setOpenAptSlip(false)} title="Preview" >
           <div
              ref={layoutRef}
-             style={{
-               background: "white",
-               padding: "20px",
-               borderRadius: "8px",
-             }}
+             className={styles.slipwrapper}
              >
             <Paper
               shadow="md"
               p="xl"
               radius="md"
               withBorder
-              style={{
-                width: "794px",
-                minHeight: "500px",
-                margin: "auto",
-                backgroundColor: "white",
-                fontFamily: "Arial, sans-serif",
-              }}
+              className={styles.a4slip}
             >
               <Stack justify="space-between" style={{ minHeight: "450px" }}>
                 
